@@ -156,6 +156,9 @@ public class Settings {
     public static final String PREF_START_UP_IN_PINNED_MODE = "startUpInPinnedMode";
     public static final boolean DEFAULT_START_UP_IN_PINNED_MODE = false;
 
+    public static final String PREF_PINNED_SERVER_ID = "pinnedServerId";
+    public static final long DEFAULT_PINNED_SERVER_ID = -1;
+
     public static final String PREF_NEWS_SHOWN_VERSIONS = "newsShownVersions";
 
     static {
