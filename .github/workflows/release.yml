@@ -33,7 +33,7 @@ jobs:
       - name: Build humla-spongycastle
         run: |
           cd libraries/humla/libs/humla-spongycastle
-          ../../../gradlew jar
+          ../../../../gradlew jar
 
       - name: Build Release APKs
         run: ./gradlew assembleFossRelease assembleBetaRelease
