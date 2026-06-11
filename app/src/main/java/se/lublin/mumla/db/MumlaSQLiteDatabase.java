@@ -203,6 +203,35 @@ public class MumlaSQLiteDatabase extends SQLiteOpenHelper implements MumlaDataba
     }
 
     @Override
+    public Server getServer(long id) {
+        Cursor c = getReadableDatabase().query(
+                TABLE_SERVER,
+                new String[]{SERVER_ID, SERVER_NAME, SERVER_HOST,
+                        SERVER_PORT, SERVER_USERNAME, SERVER_PASSWORD},
+                SERVER_ID + "=?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null);
+
+        if (!c.moveToFirst()) {
+            c.close();
+            return null;
+        }
+
+        Server server = new Server(c.getInt(c.getColumnIndex(SERVER_ID)),
+                c.getString(c.getColumnIndex(SERVER_NAME)),
+                c.getString(c.getColumnIndex(SERVER_HOST)),
+                c.getInt(c.getColumnIndex(SERVER_PORT)),
+                c.getString(c.getColumnIndex(SERVER_USERNAME)),
+                c.getString(c.getColumnIndex(SERVER_PASSWORD)));
+
+        c.close();
+
+        return server;
+    }
+
+    @Override
     public void addServer(Server server) {
         ContentValues values = new ContentValues();
         values.put(SERVER_NAME, server.getName());

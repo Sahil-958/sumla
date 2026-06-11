@@ -161,6 +161,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".service.ipc.ReconnectBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="se.lublin.mumla.action.RECONNECT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

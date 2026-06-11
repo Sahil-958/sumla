@@ -393,6 +393,14 @@ public class Settings {
         return preferences.getBoolean(PREF_START_UP_IN_PINNED_MODE, DEFAULT_START_UP_IN_PINNED_MODE);
     }
 
+    public long getPinnedServerId() {
+        return preferences.getLong(PREF_PINNED_SERVER_ID, DEFAULT_PINNED_SERVER_ID);
+    }
+
+    public void setPinnedServerId(long id) {
+        preferences.edit().putLong(PREF_PINNED_SERVER_ID, id).apply();
+    }
+
     public Set<String> getNewsShownVersions() {
         return preferences.getStringSet(PREF_NEWS_SHOWN_VERSIONS, new HashSet<>());
     }

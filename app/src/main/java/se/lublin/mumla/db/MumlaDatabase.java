@@ -30,6 +30,7 @@ public interface MumlaDatabase {
     public void close();
 
     public List<Server> getServers();
+    public Server getServer(long id);
     public void addServer(Server server);
     public void updateServer(Server server);
     public void removeServer(Server server);

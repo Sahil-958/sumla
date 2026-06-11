@@ -170,6 +170,10 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     private final HumlaObserver mObserver = new HumlaObserver() {
         @Override
         public void onConnected() {
+            if (mSettings.getPinnedServerId() == -1) {
+                mSettings.setPinnedServerId(getService().getTargetServer().getId());
+            }
+
             if (mSettings.shouldStartUpInPinnedMode()) {
                 loadDrawerFragment(DrawerAdapter.ITEM_PINNED_CHANNELS);
             } else {
@@ -384,7 +388,18 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             if (mSettings.isFirstRun()) {
                 showFirstRunGuide();
             } else {
-                new StartupAction().execute(this);
+                long pinnedId = mSettings.getPinnedServerId();
+                if (pinnedId != -1) {
+                    Server pinnedServer = mDatabase.getServer(pinnedId);
+                    if (pinnedServer != null) {
+                        connectToServer(pinnedServer);
+                    } else {
+                        mSettings.setPinnedServerId(-1);
+                        new StartupAction().execute(this);
+                    }
+                } else {
+                    new StartupAction().execute(this);
+                }
             }
         }
     }
