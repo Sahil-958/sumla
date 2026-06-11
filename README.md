@@ -1,4 +1,17 @@
 
+# Sumla (Personal Fork)
+
+**NOTICE: This is a private/personal fork of Mumla for specific personal use cases. It is not intended for public use or support.**
+
+This version has been modified to:
+1.  Connect exclusively to a pinned server on launch.
+2.  Automatically pin the first server connected to.
+3.  Support reconnection via external broadcasts (`se.lublin.mumla.action.RECONNECT`).
+
+---
+
+# Original Mumla README
+
 # Software maintenance situation
 
 Current maintainer [Daniel Lublin](https://lublin.se)
