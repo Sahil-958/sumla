@@ -60,7 +60,7 @@ jobs:
             app/build/outputs/apk/foss/release/*.apk
             app/build/outputs/apk/beta/release/*.apk
           draft: false
-          prerelease: ${{ steps.tag.outputs.latest == 'true' }}
+          prerelease: false
           make_latest: ${{ steps.tag.outputs.latest == 'true' && 'true' || 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
